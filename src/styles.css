@@ -183,10 +183,44 @@ select:focus {
   box-shadow: var(--shadow-soft);
 }
 
+.type-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    margin: 2px 2px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff; 
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.pokemon-types-modal {
+    text-align: center;
+}
+
 .type-card:hover {
   border-color: var(--color-primary);
   background: var(--color-panel-hover);
 }
+
+.type-tag.type-grass { background-color: #78C850; }
+.type-tag.type-fire { background-color: #F08030; }
+.type-tag.type-water { background-color: #6890F0; }
+.type-tag.type-bug { background-color: #A8B820; }
+.type-tag.type-normal { background-color: #A8A878; }
+.type-tag.type-poison { background-color: #A040A0; }
+.type-tag.type-electric { background-color: #F8D030; }
+.type-tag.type-ground { background-color: #E0C068; }
+.type-tag.type-fairy { background-color: #EE99AC; }
+.type-tag.type-fighting { background-color: #C03028; }
+.type-tag.type-psychic { background-color: #F85888; }
+.type-tag.type-rock { background-color: #B8A038; }
+.type-tag.type-ghost { background-color: #705898; }
+.type-tag.type-ice { background-color: #98D8D8; }
+.type-tag.type-dragon { background-color: #7038F8; }
+.type-tag.type-steel { background-color: #B8B8D0; }
+.type-tag.type-dark { background-color: #705848; }
+.type-tag.type-flying { background-color: #A890F0; }
 
 /* ------------------
     POKEMON GRID

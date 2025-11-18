@@ -82,10 +82,16 @@ function displayPokemon(pokemon) {
   const card = document.createElement("div");
   card.className = "pokemon-card";
   card.innerHTML = `
-    <img src="${pokemon.sprite}" />
-    <h3>${pokemon.name.toUpperCase()}</h3>
-    <p>#${pokemon.id}</p>
-  `;
+ <img src="${pokemon.sprite}" />
+ <h3>${pokemon.name.toUpperCase()}</h3>
+ <p>#${pokemon.id}</p>
+ 
+    <div class="pokemon-types">
+        ${pokemon.types.map(type => 
+            `<span class="type-tag type-${type}">${type.toUpperCase()}</span>`
+        ).join('')}
+    </div>
+ `;
   card.addEventListener("click", () => openModal(pokemon));
   pokemonContainer.appendChild(card);
 }
@@ -96,8 +102,14 @@ function displayPokemon(pokemon) {
 function openModal(pokemon) {
     // 1. HTML INSERTION
     modalBody.innerHTML = `
-        <img src="${pokemon.sprite}"/>
-        <h2>${pokemon.name.toUpperCase()}</h2>
+     <img src="${pokemon.sprite}"/>
+     <h2>${pokemon.name.toUpperCase()}</h2>
+
+        <div class="pokemon-types-modal" style="margin-bottom: 20px;">
+            ${pokemon.types.map(type => 
+                `<span class="type-tag type-${type}">${type.toUpperCase()}</span>`
+            ).join(' ')}
+        </div>
         <h3>Stats</h3>
         ${pokemon.stats
             .map(s => `<p><strong>${s.stat.name}:</strong> ${s.base_stat}</p>`)

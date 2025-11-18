@@ -5,5 +5,6 @@ export function normalizePokemon(raw) {
     sprite: raw.sprites.front_default,
     stats: raw.stats,
     abilities: raw.abilities.map(a => a.ability),
+    types: raw.types.map(t => t.type.name),
   };
 }
