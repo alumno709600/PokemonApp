@@ -82,7 +82,9 @@ function displayPokemon(pokemon) {
   const card = document.createElement("div");
   card.className = "pokemon-card";
   card.innerHTML = `
- <img src="${pokemon.sprite}" />
+ <img src="${pokemon.sprite}" 
+ alt="${pokemon.name}"
+      onerror="this.onerror=null; this.src='/img/placeholder.png';" />
  <h3>${pokemon.name.toUpperCase()}</h3>
  <p>#${pokemon.id}</p>
  

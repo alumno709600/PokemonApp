@@ -46,7 +46,14 @@
 body {
   background: var(--color-bg);
   color: var(--color-text);
-  padding-bottom: 60px;
+  padding-bottom: 30px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h3 {
+    letter-spacing: 0.5px; 
+    color: var(--color-accent); 
 }
 
 /* ----------------
@@ -149,7 +156,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 0 15px rgba(255, 186, 8, 0.15), var(--shadow-soft);
 }
 
 .field {
@@ -299,16 +306,23 @@ select:focus {
   border-color: var(--color-primary);
   transform: translateY(-5px); 
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  transform: rotateZ(3deg) scale(1.05);
 }
 
 .pokemon-card p {
-    font-weight: 300;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    letter-spacing: 1px;
+    margin-top: 5px;
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.1);
 }
 
 .pokemon-card img {
   width: 120px;
   height: 120px;
-  image-rendering: pixelated;
+  transition: transform 0.3s ease-in-out;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
 }
 
 .pokemon-name {
@@ -377,6 +391,27 @@ select:focus {
   margin: 0 auto 20px;
 }
 
+#modalBody ul, #modalBody p {
+    line-height: 1.6; 
+}
+
+.ability-link {
+    text-decoration: underline;
+    text-underline-offset: 3px; 
+    transition: color 0.2s;
+}
+
+.ability-link:hover {
+    color: var(--color-primary); 
+}
+
+#pokemonContainer p {
+    font-size: 1.4rem;
+    color: var(--color-text-muted);
+    margin-top: 40px;
+    animation: fadeIn 1s;
+}
+
 .stats-list {
   margin-top: 20px;
 }
@@ -435,6 +470,47 @@ select:focus {
 .alert-info {
     background-color: var(--color-primary); 
     color: var(--color-bg); 
+}
+
+.main-footer {
+    background-color: var(--color-bg-dark); 
+    color: var(--color-text-muted);
+    padding: 30px 20px;
+    margin-top: 30px;
+    text-align: center;
+    border-top: 3px solid var(--color-accent); 
+    font-size: 0.9rem;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.main-footer p {
+    margin: 5px 0;
+}
+
+.developer-name {
+    font-weight: 700;
+    color: var(--color-primary); 
+    margin: 0 5px;
+    letter-spacing: 0.5px;
+}
+
+.main-footer a {
+    color: var(--color-primary-light);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.main-footer a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+
+.footer-copyright {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    opacity: 0.7;
 }
 
 /* ----------------
