@@ -244,8 +244,10 @@ select:focus {
   background: rgba(0, 0, 0, 0.75);
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 50px 20px;
+  align-items: flex-start;
+  padding: 15px;
+  overflow-y: auto;
+  z-index: 1000;
 }
 
 .hidden {
@@ -254,13 +256,15 @@ select:focus {
 
 .modal-content {
   background: var(--color-panel);
-  padding: 30px;
+  padding: 15px;
   width: 100%;
-  max-width: 450px;
+  max-width: 420px;
   border-radius: var(--radius-lg);
   position: relative;
   animation: fadeIn 0.3s ease;
   box-shadow: var(--shadow-soft);
+  margin-top: 50px; 
+  margin-bottom: 50px;
 }
 
 .close-btn {
@@ -278,7 +282,8 @@ select:focus {
 }
 
 #modalBody img {
-  width: 180px;
+  width: 150px;
+  height: auto; 
   display: block;
   margin: 0 auto 20px;
 }
@@ -291,9 +296,47 @@ select:focus {
   margin: 5px 0;
 }
 
+.modal-content h2 {
+    margin: 5px 0 10px; /* Reducimos el margen superior e inferior */
+    font-size: 1.8rem;
+}
+
+.modal-content h3 {
+    margin: 15px 0 5px; /* Menos espacio después de Stats y Habilidades */
+    font-size: 1.2rem;
+}
+
+#modalBody p {
+    margin: 1px 0; /* Mínimo espacio vertical entre cada estadística */
+    font-size: 0.95rem;
+}
+
+#abilityList {
+    margin-top: 5px; /* Reducimos el margen superior de la lista */
+    padding-left: 20px; /* Reducimos el relleno de la lista desordenada (bullets) */
+}
+
+#abilityList li {
+    margin: 2px 0; /* Espacio vertical mínimo entre habilidades */
+    font-size: 0.95rem;
+}
+
 /* ----------------
     ANIMATIONS
 ---------------- */
+
+
+@media (max-width: 600px) {
+ .modal-content {
+    padding: 10px; 
+ }
+ #modalBody img {
+  max-width: 120px; 
+ }
+ .modal-content h2 {
+  font-size: 1.8rem; 
+ }
+}
 
 @keyframes fadeIn {
   from {
@@ -305,3 +348,4 @@ select:focus {
     transform: scale(1);
   }
 }
+

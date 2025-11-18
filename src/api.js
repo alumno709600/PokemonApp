@@ -1,4 +1,5 @@
 const API_BASE = "https://pokeapi.co/api/v2";
+const PRIVATE_API_BASE = "http://localhost:3000";
 
 // Fetch Pokémon by name or ID
 export async function fetchPokemon(query) {
@@ -37,3 +38,33 @@ export async function fetchPokemonByType(typeName) {
   }
 }
 
+// Fetch ability details
+
+export async function saveFavoritePokemon(pokemonData) {
+  try {
+    const res = await fetch(`${PRIVATE_API_BASE}/favorites`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(pokemonData),
+    });
+    if (!res.ok) throw new Error("Could not save favorite");
+    return await res.json();
+  } catch (err) {
+    console.error("Error saving favorite:", err);
+    // Lanzar el error para que sea capturado en main.js
+    throw new Error("Error connecting to private API.");
+  }
+}
+
+export async function fetchAbilityDetails(url) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Ability details not found");
+    return await res.json();
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+}
