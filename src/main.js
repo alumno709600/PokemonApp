@@ -84,7 +84,7 @@ function displayPokemon(pokemon) {
   card.innerHTML = `
  <img src="${pokemon.sprite}" 
  alt="${pokemon.name}"
-      onerror="this.onerror=null; this.src='/img/placeholder.png';" />
+     onerror="this.style.display='none'; this.closest('.pokemon-card, .modal-content').classList.add('image-missing');">
  <h3>${pokemon.name.toUpperCase()}</h3>
  <p>#${pokemon.id}</p>
  

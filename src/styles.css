@@ -156,7 +156,7 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  box-shadow: 0 0 15px rgba(255, 186, 8, 0.15), var(--shadow-soft);
+  box-shadow: 0 0 15px rgba(109, 108, 108, 0.823), var(--shadow-soft);
 }
 
 .field {
@@ -511,6 +511,38 @@ select:focus {
     margin-top: 15px;
     font-size: 0.8rem;
     opacity: 0.7;
+}
+
+
+.pokemon-card img, #modalBody img {
+    min-height: 120px; 
+}
+
+
+.pokemon-card.image-missing {
+    background-color: #252525; 
+
+}
+
+.pokemon-card.image-missing h3::before {
+    content: "[Sprite not available]";
+    display: block;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.pokemon-card.image-missing img {
+
+    display: none; 
+}
+
+.pokemon-card.image-missing {
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='45' fill='#f00'/><circle cx='50' cy='50' r='20' fill='white'/></svg>"); /* Un simple círculo rojo/blanco */
+    background-size: 50px;
+    background-repeat: no-repeat;
+    background-position: center 30px; 
+    padding-top: 100px;
 }
 
 /* ----------------
