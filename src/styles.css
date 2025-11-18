@@ -321,6 +321,32 @@ select:focus {
     font-size: 0.95rem;
 }
 
+
+.alert-container {
+    width: 100%; 
+    max-width: var(--max-width); 
+    margin: 0 auto 10px; 
+    text-align: center;
+}
+
+.custom-alert {
+    padding: 15px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    color: var(--color-text); 
+    transition: opacity 0.3s ease-in-out;
+}
+
+.alert-error {
+    background-color: var(--color-accent); 
+    border: 1px solid #d9303d;
+}
+
+.alert-info {
+    background-color: var(--color-primary); 
+    color: var(--color-bg); 
+}
+
 /* ----------------
     ANIMATIONS
 ---------------- */

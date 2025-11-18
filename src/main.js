@@ -24,9 +24,7 @@ async function loadTypes() {
 
 loadTypes();
 
-// ------------------------
 // SEARCH FORM
-// ------------------------
 filtersForm.addEventListener("submit", async e => {
   e.preventDefault();
 
@@ -36,17 +34,35 @@ filtersForm.addEventListener("submit", async e => {
   const id = document.getElementById("idInput").value.trim();
   const type = document.getElementById("typeSelect").value;
 
-  // Search by name or ID
-  if (name || id) {
-    const query = name || id;
-    try {
-      const raw = await fetchPokemon(query);
-      displayPokemon(normalizePokemon(raw));
-    } catch {
-      pokemonContainer.innerHTML = "<p>No Pokémon found.</p>";
+  const activeFilters = [name, id, type].filter(f => f && f !== 'Select a type').length;
+
+    if (activeFilters === 0) {
+        showAlert("⚠️ Please enter a Name, ID, or select a Type to search.", 'info');
+        return;
     }
-    return;
-  }
+    
+    if (activeFilters > 1) {
+        showAlert("❌ ERROR: Please use only one search criterion (Name, ID, or Type).", 'error');
+        return;
+    }
+
+    if (id && parseInt(id) <= 0) {
+        showAlert("❌ ERROR: Pokémon ID must be a positive number.", 'error');
+        return;
+    }
+
+  // Search by name or ID
+    if (name || id) {
+        const query = name || id;
+        try {
+            const raw = await fetchPokemon(query);
+            displayPokemon(normalizePokemon(raw));
+        } catch {
+            // handling error HTTP
+            showAlert("❌ ERROR: No Pokémon found with that Name or ID.", 'error');
+        }
+        return;
+    }
 
   // Search by type
   if (type) {
@@ -153,6 +169,23 @@ function openModal(pokemon) {
             }
         });
     });
+}
+
+const alertContainer = document.getElementById("alertContainer");
+
+function showAlert(message, type = 'error') {
+    clearTimeout(window.alertTimeout);
+    pokemonContainer.innerHTML = "";
+    
+    alertContainer.innerHTML = `
+        <div class="custom-alert alert-${type}">
+            ${message}
+        </div>
+    `;
+
+    window.alertTimeout = setTimeout(() => {
+        alertContainer.innerHTML = '';
+    }, 4000);
 }
 
 closeModal.addEventListener("click", () => {
