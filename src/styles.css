@@ -297,27 +297,27 @@ select:focus {
 }
 
 .modal-content h2 {
-    margin: 5px 0 10px; /* Reducimos el margen superior e inferior */
+    margin: 5px 0 10px; 
     font-size: 1.8rem;
 }
 
 .modal-content h3 {
-    margin: 15px 0 5px; /* Menos espacio después de Stats y Habilidades */
+    margin: 15px 0 5px;
     font-size: 1.2rem;
 }
 
 #modalBody p {
-    margin: 1px 0; /* Mínimo espacio vertical entre cada estadística */
+    margin: 1px 0;
     font-size: 0.95rem;
 }
 
 #abilityList {
-    margin-top: 5px; /* Reducimos el margen superior de la lista */
-    padding-left: 20px; /* Reducimos el relleno de la lista desordenada (bullets) */
+    margin-top: 5px; 
+    padding-left: 20px; 
 }
 
 #abilityList li {
-    margin: 2px 0; /* Espacio vertical mínimo entre habilidades */
+    margin: 2px 0; 
     font-size: 0.95rem;
 }
 
