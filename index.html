@@ -1,13 +1,79 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pokemonapp</title>
+    <title>Pokedex</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="src/styles.css" />
   </head>
+
   <body>
-    <div id="app"></div>
+    <!-- HEADER / HERO -->
+    <header class="hero">
+
+    </header>
+
+    <!-- SEARCH SECTION -->
+    <section class="filters-section">
+      <h2 class="section-title">Search</h2>
+
+      <form id="filtersForm" class="filters-form">
+        <div class="field">
+          <label for="nameInput">Name</label>
+          <input
+            type="text"
+            id="nameInput"
+            placeholder="Pikachu..."
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="field">
+          <label for="typeSelect">Type</label>
+          <select id="typeSelect">
+            <option value="">Select a type</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="idInput">ID</label>
+          <input type="number" id="idInput" placeholder="1 to 900" />
+        </div>
+
+        <button type="submit" class="btn-search">Search</button>
+      </form>
+    </section>
+
+    <!-- TYPES SECTION -->
+    <section id="typesSection" class="types-section">
+      <h2 class="section-title">Types</h2>
+      <div id="typesContainer" class="types-grid"></div>
+    </section>
+
+    <!-- POKEMON RESULTS -->
+    <section id="pokemonSection" class="pokemon-section">
+      <h2 class="section-title">Pokemons</h2>
+      <div id="pokemonContainer" class="pokemon-grid"></div>
+    </section>
+
+    <!-- MODAL -->
+    <div id="pokemonModal" class="modal hidden">
+      <div class="modal-content">
+        <span id="closeModal" class="close-btn">&times;</span>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+
+    <!-- SCRIPT -->
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
+

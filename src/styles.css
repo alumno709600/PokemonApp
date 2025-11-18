@@ -1,0 +1,307 @@
+:root {
+  /* Colors */
+  --color-bg: #0e0e0e;
+  --color-panel: #1a1a1a;
+  --color-panel-hover: #252525;
+
+  --color-primary: #ffba08;
+  --color-primary-light: #ffd65e;
+
+  --color-accent: #e63946;
+  --color-accent-hover: #ff4646;
+
+  --color-text: #ffffff;
+  --color-text-muted: #cccccc;
+
+  /* Rounded corners */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  /* Transitions */
+  --transition-fast: 0.2s;
+  --transition-medium: 0.3s;
+
+  /* Layout */
+  --max-width: 850px;
+
+  /* Typography */
+  --font-main: "Poppins", sans-serif;
+}
+
+/* ----------------
+    GLOBAL STYLE
+---------------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-main);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding-bottom: 60px;
+}
+
+/* ----------------
+    HERO / HEADER
+------------------- */
+
+.hero {
+  text-align: center;
+  padding: 150px 20px;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+  color: #fff;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: var(--shadow-soft);
+  background-image: url(../img/pokemon-battle-background-3219-x-1610-hrnb3kw6hpeyxmpn.jpg);
+  background-size: cover;
+  background-position: center;
+  -webkit-text-stroke: #0e0e0e 1px;
+}
+
+.title {
+  font-size: 3.4rem;
+  letter-spacing: 4px;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin-top: 10px;
+  font-weight: 300;
+  font-size: 1.1rem;
+  color: var(--color-text);
+  -webkit-text-stroke: 1px;
+}
+
+/* -------------------
+    SECTION TITLES
+------------------- */
+
+.section-title {
+  margin: 40px 0 20px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* -----------------
+    FILTERS FORM
+----------------- */
+
+.filters-section {
+  width: 90%;
+  max-width: var(--max-width);
+  margin: 40px auto;
+}
+
+.filters-form {
+  background: var(--color-panel);
+  padding: 25px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.field label {
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+input,
+select {
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: #292929;
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: var(--transition-fast);
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid var(--color-primary);
+}
+
+.btn-search {
+  margin-top: 10px;
+  padding: 12px 25px;
+  width: 100%;
+  border: none;
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: var(--radius-md);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition-medium);
+}
+
+.btn-search:hover {
+  background: var(--color-accent-hover);
+}
+
+/* --------------------
+    TYPES SECTION
+-------------------- */
+
+.types-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 15px;
+  padding: 20px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.type-card {
+  padding: 18px;
+  background: var(--color-panel);
+  border-radius: var(--radius-md);
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  font-weight: 600;
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-soft);
+}
+
+.type-card:hover {
+  border-color: var(--color-primary);
+  background: var(--color-panel-hover);
+}
+
+/* ------------------
+    POKEMON GRID
+------------------ */
+
+.pokemon-grid {
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.pokemon-card {
+  background: var(--color-panel);
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  border: 2px solid transparent;
+  box-shadow: var(--shadow-soft);
+}
+
+.pokemon-card:hover {
+  background: var(--color-panel-hover);
+  border-color: var(--color-primary);
+}
+
+.pokemon-card img {
+  width: 120px;
+  height: 120px;
+  image-rendering: pixelated;
+}
+
+.pokemon-name {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.pokemon-id {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------
+    MODAL
+--------- */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: var(--color-panel);
+  padding: 30px;
+  width: 100%;
+  max-width: 450px;
+  border-radius: var(--radius-lg);
+  position: relative;
+  animation: fadeIn 0.3s ease;
+  box-shadow: var(--shadow-soft);
+}
+
+.close-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 2rem;
+  color: var(--color-primary);
+  transition: var(--transition-fast);
+}
+
+.close-btn:hover {
+  color: var(--color-accent);
+}
+
+#modalBody img {
+  width: 180px;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.stats-list {
+  margin-top: 20px;
+}
+
+.stat {
+  margin: 5px 0;
+}
+
+/* ----------------
+    ANIMATIONS
+---------------- */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
