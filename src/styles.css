@@ -306,7 +306,7 @@ select:focus {
   border-color: var(--color-primary);
   transform: translateY(-5px); 
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-  transform: rotateZ(3deg) scale(1.05);
+  transform: scale(1.05);
 }
 
 .pokemon-card p {
