@@ -1,7 +1,7 @@
 # 🔎 PokéFinder - Practice Report
 
 <p align="center">
-  <img src="./img/banner-poke-readme.png" alt="PokéFinder Banner" width="100%">
+  <img src="img/banner-poke-readme.png" alt="PokéFinder Banner" width="100%">
 </p>
 
 ## 📝 Project Overview
