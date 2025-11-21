@@ -21,9 +21,8 @@ const modal = document.getElementById("pokemonModal");
 const modalBody = document.getElementById("modalBody");
 const closeModal = document.getElementById("closeModal");
 
-// ------------------------
+
 // LOAD TYPES ON START
-// ------------------------
 async function loadTypes() {
   const types = await fetchTypes();
   types.forEach(t => {
@@ -36,9 +35,8 @@ async function loadTypes() {
 // Initial load
 loadTypes();
 
-// ---------------------------
+
 // LIVE PARTIAL SEARCH (Name)
-// ---------------------------
 const nameInput = document.getElementById("nameInput");
 
 nameInput.addEventListener("input", debounce(async () => {
@@ -68,9 +66,8 @@ nameInput.addEventListener("input", debounce(async () => {
 }, 400));
 
 
-// ==========================
+
 // UTILITY: DEBOUNCE
-// ==========================
 // Prevents calling search too frequently while typing
 function debounce(fn, delay = 300) {
 let timer;
@@ -131,9 +128,8 @@ filtersForm.addEventListener("submit", async e => {
   }
 });
 
-// ------------------------
+
 // SHOW FAVORITES LOGIC
-// ------------------------
 showFavoritesBtn.addEventListener("click", async () => {
     // Clear current list
     pokemonContainer.innerHTML = "";
@@ -164,9 +160,8 @@ showFavoritesBtn.addEventListener("click", async () => {
     }
 });
 
-// ------------------------
+
 // DISPLAY A POKEMON CARD
-// ------------------------
 function displayPokemon(pokemon) {
   const card = document.createElement("div");
   card.className = "pokemon-card";
@@ -187,9 +182,8 @@ function displayPokemon(pokemon) {
   pokemonContainer.appendChild(card);
 }
 
-// ------------------------
+
 // MODAL
-// ------------------------
 function openModal(pokemon) {
     // 1. HTML INSERTION
     modalBody.innerHTML = `
@@ -222,10 +216,8 @@ function openModal(pokemon) {
     `;
     modal.classList.remove("hidden");
 
-    // =========================================================
+  
     // 2. INTERACTION LOGIC
-    // =========================================================
-
     // A. Private API Logic (Save Favorite)
     document.getElementById("saveFavoriteBtn").addEventListener("click", async () => {
         try {
