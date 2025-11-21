@@ -20,6 +20,7 @@ const showFavoritesBtn = document.getElementById("showFavoritesBtn");
 const modal = document.getElementById("pokemonModal");
 const modalBody = document.getElementById("modalBody");
 const closeModal = document.getElementById("closeModal");
+const toastContainer = document.getElementById("toastContainer");
 
 
 // LOAD TYPES ON START
@@ -226,11 +227,15 @@ function openModal(pokemon) {
                 name: pokemon.name, 
                 date: new Date().toISOString()
             });
-            alert(`${pokemon.name.toUpperCase()} successfully saved to favorites!`);
-            document.getElementById("saveFavoriteBtn").textContent = "⭐️ Saved!";
-            document.getElementById("saveFavoriteBtn").disabled = true;
+            showToast(`${pokemon.name.toUpperCase()} added to favorites!`);
+
+            const btn = document.getElementById("saveFavoriteBtn");
+            btn.textContent = "✅ Saved!";
+            btn.style.backgroundColor = "#2ecc71";
+            btn.disabled = true;
+
         } catch (error) {
-            alert(`ERROR saving favorite: ${error.message}. Is json-server running on http://localhost:3000?`);
+            alert("❌ Error saving favorite. Check if json-server is running.");
         }
     });
 
@@ -281,6 +286,23 @@ function showAlert(message, type = 'error') {
     window.alertTimeout = setTimeout(() => {
         alertContainer.innerHTML = '';
     }, 4000);
+}
+
+function showToast(message) {
+   
+    const toast = document.createElement("div");
+
+    toast.className = "custom-alert alert-success toast-entry";
+    toast.innerHTML = `✅ ${message}`;
+    toastContainer.appendChild(toast);
+
+    setTimeout(() => {
+        toast.style.transition = "opacity 0.5s, transform 0.5s";
+        toast.style.opacity = "0";
+        toast.style.transform = "translateX(100%)"; 
+        
+        setTimeout(() => toast.remove(), 500);
+    }, 3000);
 }
 
 closeModal.addEventListener("click", () => {
