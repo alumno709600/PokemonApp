@@ -90,7 +90,9 @@ Here are the most important parts of our code:
    ```bash
    npx json-server --watch db.json --port 3000
 2. **Open the App:**
-   Open `index.html` using **Live Server** in VS Code.
+   Open a new **Terminal** (keep the previous one open), and run:
+   ```bash
+   npm run dev
 
 ---
 
