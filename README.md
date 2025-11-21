@@ -1,8 +1,6 @@
 # 🔎 PokéFinder - Practice Report
 
-<p align="center">
-  <img src="img/banner-poke-readme.png" alt="PokéFinder Banner" width="100%">
-</p>
+![Banner](./img/banner-poke-readme.png)
 
 ## 📝 Project Overview
 **PokéFinder** is a web application where you can search for Pokémon, see their stats, and save your favorites. The project is built using **HTML**, **CSS**, and **JavaScript**.
