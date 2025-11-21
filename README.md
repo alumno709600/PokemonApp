@@ -1,47 +1,68 @@
-# 🔎 PokéFinder - Practice Report
+# 🔎 PokéFinder – Practice Report
 
 ![Banner](./img/banner-poke-readme.png)
 
 ## 📝 Project Overview
-**PokéFinder** is a web application where you can search for Pokémon, see their stats, and save your favorites. The project is built using **HTML**, **CSS**, and **JavaScript**.
 
-We use two different APIs in this project:
-1. 🌐 **Public API:** [PokéAPI](https://pokeapi.co/) (To get the Pokémon data).
-2. 🏠 **Local API:** `json-server` (To save your favorites on your computer).
+**PokéFinder** is an interactive web application designed to search, explore, and save information about Pokémon.  
+It is built using **HTML**, **CSS**, and **JavaScript**, and integrates **two different APIs**:
 
----
+1. 🌐 **Public API:** [PokéAPI](https://pokeapi.co/) – Provides all Pokémon data.
+2. 🏠 **Local API:** `json-server` – Stores the user’s favorite Pokémon locally.
 
-## 👤 User Features (How it works)
-
-Here is what a user can do in the application:
-
-* **🔎 Search:** You can type a **Name** (like "Pikachu") or an **ID** (like "25") to find a Pokémon.
-* **⚡ Live Search:** Just start typing, and the app will find Pokémon instantly!
-* **🌪️ Filter by Type:** You can select a type (like 🔥 Fire or 💧 Water) to see all Pokémon of that group.
-* **📊 Detailed Stats:** Click on any card to open a window (Modal). You will see:
-    * The picture (Sprite).
-    * Stats (HP, Attack, Speed).
-    * Abilities.
-* **🧠 Ability Check:** Inside the details window, click on an **Ability Name** to read what it does.
-* **⭐ Favorites:**
-    * Click **"Save as Favorite"** to keep a Pokémon.
-    * Click the **"Show My Favorites"** button to see your saved collection.
+This document explains how these APIs were accessed, highlights the key application functions, and describes the user experience from a functional perspective.
 
 ---
 
-## 🔗 How We Access the APIs
+## 👤 User Features
 
-We use the JavaScript `fetch()` function to get data from the internet.
+From a user’s point of view, the application offers:
 
-### 1. The Public API (PokéAPI)
-* **URL:** `https://pokeapi.co/api/v2`
-* **How we use it:** We ask this API for Pokémon names, images, types, and abilities. We also use it to fill the "Type" dropdown menu.
+### 🔎 **1. Search by Name or ID**
+Type any Pokémon name (e.g., “Pikachu”) or ID (e.g., “25”) to instantly retrieve results.
 
-### 2. The Private API (Local)
-* **URL:** `http://localhost:3000`
-* **How we use it:** We use a file called `db.json` to store data.
-    * **POST:** To save a new favorite.
-    * **GET:** To load the list of favorites.
+### ⚡ **2. Live Search (Dynamic Filtering)**
+As the user types, the application automatically filters and displays Pokémon that partially match the input  
+—for example, typing “pi” shows **Pikachu**, **Pidgey**, **Piplup**, etc.
+
+### 🌪️ **3. Filter by Type**
+Users can select a Pokémon type from a dropdown (🔥 Fire, 💧 Water, 🪨 Rock, etc.) to view all Pokémon associated with that type.
+
+### 📊 **4. Detailed Pokémon View (Modal Window)**
+Clicking a Pokémon card opens a detailed modal showing:
+- Sprite (official artwork)
+- Base stats (HP, Attack, Defense, Speed…)
+- Types
+- Abilities
+
+### 🧠 **5. Ability Information**
+Inside the modal, users can click any ability to view:
+- Ability description
+- Effects
+- Generation introduced
+
+This is done through a secondary API request.
+
+### ⭐ **6. Save Favorites**
+Users can save Pokémon to their favorites list.  
+A dedicated button (**Show My Favorites**) loads the complete saved collection from the local JSON server.
+
+---
+
+## 🔗 How the APIs Are Accessed
+
+### 🌐 **1. Public PokéAPI**
+- Base URL: `https://pokeapi.co/api/v2/`
+- Used for:
+  - Pokémon data (name, ID, stats, images)
+  - Types list
+  - Ability details
+
+Example request:
+
+```javascript
+const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`);
+const data = await response.json();
 
 ---
 
