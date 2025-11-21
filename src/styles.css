@@ -146,50 +146,98 @@ h3 {
 .filters-section {
   width: 90%;
   max-width: var(--max-width);
-  margin: 40px auto;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10; 
 }
 
 .filters-form {
-  background: var(--color-panel);
-  padding: 25px;
+  
+  background: linear-gradient(145deg, #1e1e1e, #141414);
+  padding: 30px 40px;
   border-radius: var(--radius-lg);
+  
+ 
+  border: 1px solid #333;
+  border-top: 1px solid #444; 
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5), 
+    inset 0 1px 1px rgba(255, 255, 255, 0.05); 
+
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  box-shadow: 0 0 15px rgba(109, 108, 108, 0.823), var(--shadow-soft);
+  gap: 25px;
+  align-items: flex-end;
 }
+
 
 .field {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  flex: 1 1 200px; 
+  min-width: 200px;
 }
 
+
 .field label {
-  color: var(--color-primary);
-  font-weight: 600;
-  margin-bottom: 5px;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;      
+  text-transform: uppercase; 
+  letter-spacing: 1.5px;   
+  font-weight: 700;
+  margin-bottom: 8px;
+  margin-left: 5px;       
+  transition: color 0.3s;
 }
+
+
+.field:focus-within label {
+  color: var(--color-primary);
+}
+
 
 input,
 select {
-  padding: 12px;
+  width: 100%;
+  padding: 14px 18px;
   border-radius: var(--radius-md);
-  border: none;
-  background: #292929;
-  color: var(--color-text);
-  border: 1px solid #3a3a3a;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+  
+
+  background-color: #0a0a0a; 
+  border: 1px solid #333;
+  color: #fff;
+  
   font-size: 1rem;
-  transition: var(--transition-fast);
+  font-family: var(--font-main);
+  transition: all 0.3s ease;
+  
+  
+  appearance: none; 
+  -webkit-appearance: none;
 }
+
+
+select {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFBA08%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+  cursor: pointer;
+}
+
 
 input:focus,
 select:focus {
-  outline: 2px solid var(--color-primary);
   outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px var(--color-primary-light);
+  border-color: var(--color-primary); 
+  background-color: #111;
+  box-shadow: 0 0 15px rgba(255, 186, 8, 0.15); 
+  transform: translateY(-2px);
+}
+
+input::placeholder {
+  color: #555;
+  font-style: italic;
 }
 
 .btn-search {
@@ -547,52 +595,112 @@ select:focus {
 
 
 #showFavoritesBtn {
-    /* Size & Layout */
+ 
     width: fit-content;
     margin: 25px auto 0 auto;
     padding: 10px 25px;
     
-    /* Flexbox for icon alignment */
+   
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
 
-    /* VISUAL STYLE - THE CHANGE */
-    background-color: transparent; /* Transparent background */
-    border: 2px solid var(--color-primary); /* Gold border */
-    color: var(--color-primary); /* Gold text */
     
+    background-color: transparent; 
+    border: 2px solid var(--color-primary); 
+    color: var(--color-primary); 
     font-size: 1rem;
     font-weight: 700;
-    border-radius: 50px; /* Pill shape */
+    border-radius: 50px;
     cursor: pointer;
     
-    /* Smooth transition for the hover effect */
+  
     transition: all 0.3s ease;
 }
 
-/* The Star Icon */
+
 .icon-star {
     width: 20px;
     height: 20px;
-    transition: transform 0.3s ease; /* We will animate the star too */
+    transition: transform 0.3s ease; 
 }
 
-/* HOVER EFFECT */
+
 #showFavoritesBtn:hover {
-    /* Invert colors: Gold background, dark text */
+   
     background-color: var(--color-primary);
     color: var(--color-bg);
-    
-    /* Add a glow */
+
     box-shadow: 0 0 15px var(--color-primary);
     transform: translateY(-2px);
 }
 
-/* Extra touch: Spin the star slightly on hover */
+
 #showFavoritesBtn:hover .icon-star {
     transform: rotate(72deg) scale(1.2);
+}
+
+.section-title {
+  margin: 40px 0 20px;
+
+  text-align: center; 
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-primary);
+
+
+  display: flex;            
+  justify-content: center;   
+  align-items: center;       
+  gap: 15px;                
+}
+
+
+.section-icon {
+  width: 36px;  
+  height: 36px;
+}
+
+.section-title {
+  
+  margin: 50px 0 30px;
+  position: relative;  
+  
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+ 
+  font-size: 2.2rem;
+  text-transform: uppercase; 
+  letter-spacing: 4px;       
+  font-weight: 800;          
+  
+ 
+  color: var(--color-primary);
+  text-shadow: 0 0 20px rgba(255, 186, 8, 0.4); 
+}
+
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;       
+  width: 60px;         
+  height: 4px;         
+  background-color: var(--color-accent); 
+  border-radius: 2px;  
+  box-shadow: 0 0 10px rgba(230, 57, 70, 0.6); 
+}
+
+
+.section-icon {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 0 5px rgba(255, 186, 8, 0.6)); 
 }
 
 /* ----------------
