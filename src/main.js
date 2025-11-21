@@ -1,4 +1,4 @@
-import { fetchPokemon, fetchTypes, fetchPokemonByType, saveFavoritePokemon, fetchAbilityDetails } from "./api.js";
+import { fetchPokemon, fetchTypes, fetchPokemonByType, saveFavoritePokemon, fetchAbilityDetails, fetchFavorites} from "./api.js";
 import { normalizePokemon } from "./pokemonModel.js";
 
 let allPokemonList = [];
@@ -16,6 +16,7 @@ const typeSelect = document.getElementById("typeSelect");
 const pokemonContainer = document.getElementById("pokemonContainer");
 const filtersForm = document.getElementById("filtersForm");
 
+const showFavoritesBtn = document.getElementById("showFavoritesBtn");
 const modal = document.getElementById("pokemonModal");
 const modalBody = document.getElementById("modalBody");
 const closeModal = document.getElementById("closeModal");
@@ -128,6 +129,39 @@ filtersForm.addEventListener("submit", async e => {
       displayPokemon(normalizePokemon(raw));
     }
   }
+});
+
+// ------------------------
+// SHOW FAVORITES LOGIC
+// ------------------------
+showFavoritesBtn.addEventListener("click", async () => {
+    // Clear current list
+    pokemonContainer.innerHTML = "";
+    
+    try {
+        // 1. Get the list of favorites from db.json
+        const favoriteList = await fetchFavorites();
+
+        if (favoriteList.length === 0) {
+            showAlert("⚠️ You don't have any favorites yet!", "info");
+            return;
+        }
+
+        // 2. Loop through each favorite
+        // We need to fetch full details from PokeAPI to get the sprite and types
+        for (const fav of favoriteList) {
+            try {
+                const rawData = await fetchPokemon(fav.name);
+                const normalized = normalizePokemon(rawData);
+                displayPokemon(normalized);
+            } catch (error) {
+                console.error(`Error loading ${fav.name}`, error);
+            }
+        }
+
+    } catch (error) {
+        showAlert("❌ Error loading favorites. Is the local server running?", "error");
+    }
 });
 
 // ------------------------

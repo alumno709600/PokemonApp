@@ -68,3 +68,14 @@ export async function fetchAbilityDetails(url) {
  throw err;
  }
 }
+
+export async function fetchFavorites() {
+  try {
+    const res = await fetch(`${PRIVATE_API_BASE}/favorites`);
+    if (!res.ok) throw new Error("Cannot load favorites");
+    return await res.json();
+  } catch (err) {
+    console.error("Error fetching favorites:", err);
+    throw err;
+  }
+}
