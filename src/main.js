@@ -1,6 +1,17 @@
 import { fetchPokemon, fetchTypes, fetchPokemonByType, saveFavoritePokemon, fetchAbilityDetails } from "./api.js";
 import { normalizePokemon } from "./pokemonModel.js";
 
+let allPokemonList = [];
+
+// Load entire Pokémon list at start (name + url only)
+async function loadAllPokemonList() {
+    const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1025");
+    const data = await res.json();
+    allPokemonList = data.results; // contains { name, url }
+}
+
+loadAllPokemonList();
+
 const typeSelect = document.getElementById("typeSelect");
 const pokemonContainer = document.getElementById("pokemonContainer");
 const filtersForm = document.getElementById("filtersForm");
@@ -21,8 +32,52 @@ async function loadTypes() {
     typeSelect.appendChild(opt);
   });
 }
-
+// Initial load
 loadTypes();
+
+// ---------------------------
+// LIVE PARTIAL SEARCH (Name)
+// ---------------------------
+const nameInput = document.getElementById("nameInput");
+
+nameInput.addEventListener("input", debounce(async () => {
+    const text = nameInput.value.trim().toLowerCase();
+    pokemonContainer.innerHTML = "";
+
+    if (text === "") return;
+
+    // Filter local list by partial match
+    const matches = allPokemonList.filter(p => p.name.includes(text));
+
+    // Limit results (optional)
+    const limited = matches.slice(0, 20);
+
+    for (const p of limited) {
+        try {
+            const raw = await fetchPokemon(p.name);
+            displayPokemon(normalizePokemon(raw));
+        } catch {
+            continue;
+        }
+    }
+
+    if (matches.length === 0) {
+        pokemonContainer.innerHTML = "<p>No Pokémon found...</p>";
+    }
+}, 400));
+
+
+// ==========================
+// UTILITY: DEBOUNCE
+// ==========================
+// Prevents calling search too frequently while typing
+function debounce(fn, delay = 300) {
+let timer;
+return (...args) => {
+clearTimeout(timer);
+timer = setTimeout(() => fn(...args), delay);
+};
+}
 
 // SEARCH FORM
 filtersForm.addEventListener("submit", async e => {

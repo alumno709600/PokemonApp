@@ -465,6 +465,7 @@ select:focus {
 .alert-error {
     background-color: var(--color-accent); 
     border: 1px solid #d9303d;
+    text-shadow:  2px 2px 4px rgba(0, 0, 0, 0.7), 
 }
 
 .alert-info {
