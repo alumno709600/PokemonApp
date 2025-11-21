@@ -545,6 +545,34 @@ select:focus {
     padding-top: 100px;
 }
 
+
+/* Estilos para el botón de favoritos */
+#showFavoritesBtn {
+    margin-top: 30px;
+    background-color: var(--color-primary);
+    color: var(--color-bg); /* Texto oscuro */
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(255, 186, 8, 0.3);
+    
+    /* Alineación perfecta */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Espacio entre estrella y texto */
+}
+
+/* Controlar el tamaño del icono SVG */
+.icon-star {
+    width: 24px;  /* Tamaño de la estrella */
+    height: 24px;
+}
+
+#showFavoritesBtn:hover {
+    background-color: var(--color-primary-light);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(255, 186, 8, 0.5);
+}
+
 /* ----------------
     ANIMATIONS
 ---------------- */
