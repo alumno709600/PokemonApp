@@ -96,5 +96,11 @@ Here are the most important parts of our code:
 
 ---
 
+## Project Report PDF
+
+[Proyect Report PDF](https://docs.google.com/document/d/1ZsYTKsYyGlZG7xZwkYb4J-uXYWjgIAc-_kPPKkoxy5s/edit?usp=sharing)
+
+---
+
 ### 👨‍💻 Developers
 Built by **Elias Maatalat** & **Lucilene Vidal Lima**.
